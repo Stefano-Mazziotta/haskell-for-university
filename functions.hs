@@ -13,4 +13,8 @@ square x = x * x
 -- 2 + 2 | 3 `div` 2
 
 -- Posfija
--- 2 cuadrado   
+-- 2 cuadrado
+
+-- function composition
+-- 
+-- f(g(x)) == f (g x) <==> [maths || haskell] 
