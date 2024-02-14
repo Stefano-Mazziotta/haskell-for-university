@@ -6,14 +6,14 @@ divide x y = x `div` y
 square :: Int -> Int
 square x = x * x
 
--- Prefija
+-- prefix
 -- -(-2) | div 3 2
 
--- Infijas
+-- infix
 -- 2 + 2 | 3 `div` 2
 
--- Posfija
--- 2 cuadrado
+-- postfix
+-- 2 square
 
 -- function composition
 -- 
