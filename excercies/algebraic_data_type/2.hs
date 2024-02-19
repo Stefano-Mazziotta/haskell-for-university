@@ -34,4 +34,27 @@ popqpr :: ColaPrio a -> ColaPrio a
 popqpr (CP []) = error "Cola vacia"
 popqpr (CP (x:xs)) = CP xs
 
--- falta implementar la estructura de almacenamiento como arbol binario
+-- Implementado con la estructura de almacenamiento como arbol binario
+
+data PriorityQueue a = NodoVacio | Nodo a (PriorityQueue a)
+    deriving Show
+
+mkqpr' :: PriorityQueue a 
+mkqpr' = NodoVacio
+
+addqpr' :: (Ord a) => a -> PriorityQueue a -> PriorityQueue a
+addqpr' value NodoVacio = Nodo value NodoVacio
+addqpr' value (Nodo n nextNodo) 
+    | value > n = Nodo n (addqpr' value nextNodo)
+    | value < n = Nodo value (Nodo n nextNodo)
+    | value == n = Nodo value nextNodo
+
+nextqpr' :: PriorityQueue a -> a
+nextqpr' NodoVacio = error "Empty queue"
+nextqpr' (Nodo n NodoVacio) = n
+nextqpr' (Nodo n nextNodo) = n
+
+popqpr' :: PriorityQueue a -> PriorityQueue a
+popqpr' (Nodo n NodoVacio) = NodoVacio
+popqpr' (Nodo n nextNodo) = nextNodo
+
