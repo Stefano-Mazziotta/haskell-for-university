@@ -25,7 +25,30 @@ merge [] ys = ys
 merge (x:xs) (y:ys) = 
     if x < y 
     then (x : merge xs (y:ys))
-    else (y : merge ys (x:xs)) 
+    else (y : merge (x:xs) ys) 
+
+{-
+merge [1,5,6] [2,3,7]
+    1 < 3
+    1 : merge [5,6] [2,3,7]
+        5 < 2
+        2 : merge [5,6] [3,7]
+            5 < 3
+            3 : merge [5,6] [7]
+                5 < 7      
+                5 : merge [6] [7]
+                    6 < 7
+                    6 : merge [] [7]
+                        [7]
+[1,2,3,5,6,7]
+    1 : [2,3,5,6,7]
+        2 : [3,5,6,7]
+            3 : [5,6,7]   
+                5 : [6,7]
+                    6 : [7]
+
+
+-}
 
 
 
