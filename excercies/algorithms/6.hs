@@ -10,4 +10,12 @@ split x (y:ys)
     | otherwise = (left, y:right)
   where
     (left, right) = split x ys
+{-
 
+([1,5], [11,20]) = split 10 [5,1,20,11]
+([1], [11, 20]) = split 10 [1,11,20]
+([], [11,20]) = split 10 [11,20]
+([], [20]) = split 10 [20]
+([], []) = split 10 []
+
+-}
